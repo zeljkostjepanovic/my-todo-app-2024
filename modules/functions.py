@@ -10,9 +10,16 @@ def get_todos(filepath=FILEPATH):
     Returns:
         list: returns a list of strings (todos)
     """
-    with open(filepath, 'r') as file:
-        todos = file.readlines()
-    return todos
+    try:
+        with open(filepath, 'r') as file:
+            todos = file.readlines()
+        return todos
+    except FileNotFoundError:
+        with open(filepath, 'a') as file:
+            todos = ["Placeholder Todo"]
+        return todos
+            
+            
 
 def write_todos(content, filepath=FILEPATH):
     """ Write a list of todos to a file

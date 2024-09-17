@@ -6,6 +6,7 @@ st.set_page_config(layout="wide")
 
 todos = functions.get_todos()
 
+
 def add_todo():
     todo = st.session_state["new_todo"] + "\n"
     todos.append(todo)
@@ -25,8 +26,8 @@ for index, todo in enumerate(todos):
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
-        st.experimental_rerun()
-        
+        st.rerun()
+       
 
 st.text_input(label="Add a new todo", 
               placeholder="Add a new todo",
